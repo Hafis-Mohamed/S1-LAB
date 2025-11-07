@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>String Functions</title>
+  <style>
+    /* Global Reset and Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f0f4f8;
+      color: #333;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1, h2 {
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+
+    /* Container Styling */
+    .card {
+      background-color: #fff;
+      width: 100%;
+      max-width: 600px;
+      padding: 30px;
+      margin: 20px 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 1em;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 8px 5px;
+      font-size: 1em;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #1a252f;
+    }
+
+    /* Placeholder Styles */
+    .placeholder {
+      background-color: #fff;
+      width: 100%;
+      max-width: 600px;
+      padding: 20px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .divider {
+      width: 100%;
+      max-width: 600px;
+      border-top: 1px solid #ddd;
+      margin: 30px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- String Functions Section -->
+  <div class="card">
+    <h1>String Functions</h1>
+    <label for="string">Enter a string : </label>
+    <input type="text" id="string" />
+    <div>
+      <button onclick="stringlen()">String Length</button>
+      <button onclick="toupper()">Uppercase</button>
+      <button onclick="tolower()">Lowercase</button>
+      <button onclick="slc()">Slice</button>
+      <button onclick="concatenate()">Concat</button>
+      <button onclick="findindex()">Index Of</button>
+      <button onclick="findlastindex()">Last Index Of</button>
+      <button onclick="search()">Search</button>
+      <button onclick="sub()">SubStr</button>
+      <button onclick="subs()">SubString</button>
+      <button onclick="rplc()">Replace</button>
+    </div>
+    <h1 id="result"></h1>
+  </div>
+
+    <div class="card">
+    <h1>Math Functions</h1>
+    <label for="string">Enter a number : </label>
+    <input type="text" id="num" />
+    <div>
+      <button onclick="numRound()">Round of</button>
+      <button onclick="toceil()">Ceil</button>
+      <button onclick="tofloor()">Floor</button>
+      <button onclick="totrunc()">Trunc</button>
+      <button onclick="findsign()">Sign</button>
+      <button onclick="power()"> Power</button>
+      <button onclick="squareroot()">Square Root</button>
+      <button onclick="toabs()">Absolute number</button>
+      <button onclick="findsin()">Sin Value</button>
+      <button onclick="findcos()">cos value</button>
+      <button onclick="findlog()">Log</button>
+    </div>
+    <h1 id="result1"></h1>
+  </div>
+
+
+  <script>
+
+    function findlog() {
+      let num = document.getElementById("num").value;
+      num = Number(num);
+      let log = Math.log(num);
+      document.getElementById("result1").innerHTML = "Log value of the number is " + log;
+    }
+
+
+    function findcos() {
+      let num = document.getElementById("num").value;
+      num = Number(num);
+      let cos = Math.cos(num);
+      document.getElementById("result1").innerHTML = "Cos value of the number is " + cos;
+    }
+
+    function findsin() {
+      let num = document.getElementById("num").value;
+      num = Number(num);
+      let sin = Math.sin(num);
+      document.getElementById("result1").innerHTML = "Sin value of the number is " + sin;
+    }
+
+    function toabs() {
+      let num = document.getElementById("num").value;
+      num = Number(num);
+      let abs = Math.abs(num);
+      document.getElementById("result1").innerHTML = "Absolute of the number is " + abs;
+    }
+    
+
+    function squareroot() {
+      let num = document.getElementById("num").value;
+      num = Number(num);
+      let sqrt = Math.sqrt(num);
+      document.getElementById("result1").innerHTML = "Square Root of the number is " + sqrt;
+    }
+    
+    function power() {
+      let num = document.getElementById("num").value;
+      num = Number(num);
+      let exp = prompt("Enter the exponent : ");
+      exp = Number(exp);
+      let power = Math.pow(num,exp);
+      document.getElementById("result1").innerHTML = num + "^"+exp+ "  is " + power;
+    }
+
+    function findsign() {
+      let num = document.getElementById("num").value;
+      num = Number(num);
+      let trunc = Math.sign(num);
+      if(trunc==0){
+        document.getElementById("result1").innerHTML = "The number is zero" ;
+      }
+      else if(trunc==1){
+        document.getElementById("result1").innerHTML = "The number is positive" ;
+      }
+      else{
+        document.getElementById("result1").innerHTML = "The number is negative" ;
+      }
+    }
+
+    function totrunc() {
+      let num = document.getElementById("num").value;
+      num = Number(num);
+      let trunc = Math.trunc(num);
+      document.getElementById("result1").innerHTML = "Integer part of the number is " + trunc;
+    }
+    
+
+    function tofloor() {
+      let num = document.getElementById("num").value;
+      num = Number(num);
+      let floor = Math.floor(num);
+      document.getElementById("result1").innerHTML = "Floor of number is " + floor;
+    }
+    
+    function toceil() {
+      let num = document.getElementById("num").value;
+      num = Number(num);
+      let ceil = Math.ceil(num);
+      document.getElementById("result1").innerHTML = "Ceil of number is " + ceil;
+    }
+
+    function numRound() {
+      let num = document.getElementById("num").value;
+      num = Number(num);
+      let round = Math.round(num);
+      document.getElementById("result1").innerHTML = "Round of number is " + round;
+    }
+
+    function stringlen() {
+      let str = document.getElementById("string").value;
+      let len = str.length;
+      document.getElementById("result").innerHTML = "Length of string is " + len;
+    }
+
+    function toupper() {
+      let str = document.getElementById("string").value;
+      let up = str.toUpperCase();
+      document.getElementById("result").innerHTML = up;
+    }
+
+    function tolower() {
+      let str = document.getElementById("string").value;
+      let low = str.toLowerCase();
+      document.getElementById("result").innerHTML = low;
+    }
+
+    function slc(){
+        let str = document.getElementById("string").value;
+        let x = prompt("Enter first index: ");
+        let y = prompt("Enter end index : ");
+        let z = str.slice(x,y);
+        document.getElementById("result").innerHTML = z;
+
+    }
+
+    function concatenate(){
+        let str1 = document.getElementById("string").value;
+        let str2 = prompt("Enter the second string to concatenate: ");
+
+        let res = str1.concat(str2);
+        document.getElementById("result").innerHTML = res;
+    }
+
+    function findindex(){
+        let str = document.getElementById("string").value;
+        let str1 = prompt("Enter the string to find the index: ");
+        let x = str.indexOf(str1);
+        document.getElementById("result").innerHTML = x;
+    }
+
+    function findlastindex(){
+        let str = document.getElementById("string").value;
+        let str1 = prompt("Enter the string to find the last index: ");
+        let x = str.lastIndexOf(str1);
+        document.getElementById("result").innerHTML = x;
+    }
+
+    function search(){
+        let str = document.getElementById("string").value;
+        let str1 = prompt("Enter the string to search: ");
+        let x = str.search(str1);
+        document.getElementById("result").innerHTML = x;
+    }
+
+    function sub(){
+        let str = document.getElementById("string").value;
+        let x = prompt("Enter first index: ");
+        let y = prompt("Enter end index: ");
+        let z = str.substr(x,y);
+        document.getElementById("result").innerHTML = z;
+    }
+
+    function subs(){
+        let str = document.getElementById("string").value;
+        let x = prompt("Enter first index: ");
+        let y = prompt("Enter end index: ");
+        let z = str.substring(x,y);
+        document.getElementById("result").innerHTML = z;
+    }
+
+    function rplc(){
+        let str = document.getElementById("string").value;
+        let str1 = prompt("Enter the string to replace: ");
+        let str2 = prompt("Enter the string to be replaced:")
+        let x = str.replace(str1,str2);
+        document.getElementById("result").innerHTML = x;
+    }
+  </script>
+</body>
+</html>
