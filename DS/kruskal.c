@@ -2,14 +2,39 @@
 #include <stdlib.h>
 #define MAX 100
 
-int n, e, adj[MAX][MAX], visited[MAX];
+int n, e, adj[MAX][MAX], visited[MAX], u,v,w,parent[MAX];
 
 struct edge{
     int u,v,w;
 };
 
-int kruskal(){
-    
+int find(int x){
+    while(parent[x]!=x)
+        x=parent[x];
+    return x;
+}
+
+void union_set(int u,int v){
+    int x=find(u);
+    int y=find(v);
+    parent[y]=x;
+}
+
+int kruskal(struct edge edge[]){
+    int edge_used=0;
+    int mst_weight=0;
+    for(int i=0;i<e&&edge_used<n-1;i++){
+        int u=edge[i].u;
+        int v=edge[i].v;    
+        if(find(u)!=find(v)){
+            printf("Take Edge : %d - %d = %d\n",u,v,edge[i].w);
+            mst_weight+=edge[i].w;
+            union_set(u,v);
+            edge_used++;
+        }
+    }
+    printf("Total MST Weight : %d",mst_weight);
+    return mst_weight;
 }
 
 int main()
@@ -45,6 +70,7 @@ int main()
         adj[edge[i].v][edge[i].u] = edge[i].w;
     }
 
+    printf("Adjacency matrix is :\n");
     for (i = 0; i < n; i++){
         for (j = 0; j < n; j++){
             printf("%d ", adj[i][j]);
@@ -64,7 +90,10 @@ int main()
     }
     for(i=0;i<e;i++)
         printf("%d - %d = %d\n",edge[i].u,edge[i].v,edge[i].w);
-    kruskal();
+    for(i=0;i<n;i++){
+        parent[i]=i;
+    }
+    kruskal(edge);
     return 0;
             
 }
