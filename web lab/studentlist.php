@@ -73,12 +73,31 @@ if(isset($_POST['update'])){
         echo "<caption>Update Student Details</caption>";
         echo "<tr><th>Name :</th><td>".$row['name']."</td></tr>";
         echo "<tr><th>Roll No :</th><td>".$row['rollno']."<br>";
-        echo "<tr><th>Address :</th><td><textarea name='address' id='address' value='".$row['address']."'></textarea></td></tr>";
+        echo "<tr><th>Address :</th><td><textarea name='address' id='address'>".$row['address']."</textarea></td></tr>";
         echo "<tr><th>Phone No :</th><td><input type='number' id='phoneno' name='phoneno' value='".$row['phoneno']."'></td></tr>";
         echo "<tr><th>User Name :</th><td><input type='text' id='username' name='username' value='".$row['username']."'></td></tr>";
-        echo "<tr><th>Phone No :</th><td><input type='number' id='password' name='password' value='".$row['password']."'></td></tr>";
+        echo "<tr><th>Password :</th><td><input type='password' id='password' name='password' value='".$row['password']."'></td></tr>";
         echo "<tr><td><button type='submit' name='updateDetails' id='updateDetails' value='".$row['rollno']."'>Update</button></td>"; 
         echo "<td><input type='reset' name='reset' id='reset'></td></tr>"; 
+    }
+}
+
+if(isset($_POST['updateDetails'])){
+    $rollno=$_POST['updateDetails'];
+    $address=$_POST['address'];
+    $phoneno=$_POST['phoneno'];
+    $username=$_POST['username'];
+    $password=$_POST['password'];
+    $sql = "UPDATE stud 
+        SET address='$address',
+            phoneno='$phoneno',
+            username='$username',
+            password='$password'
+        WHERE rollno='$rollno'";
+    if(mysqli_query($conn,$sql)){
+        echo "<script>alert('Student Updation successfull!!');</script>";
+    }else{
+        echo "<scipt>alert('Student Updation Failed!!');</script>";
     }
 }
 ?>
