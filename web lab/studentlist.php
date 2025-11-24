@@ -4,13 +4,129 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student List</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #eef1f7;
+        }
+
+        .outer {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .inner {
+            background: #ffffff;
+            padding: 20px;
+            width: 95%;
+            max-width: 1100px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+        }
+
+        caption {
+            font-size: 22px;
+            font-weight: bold;
+            padding: 10px 0;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table th, table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            font-size: 15px;
+            text-align: center;
+        }
+
+        th {
+            background: #f2f5fc;
+        }
+
+        button {
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            margin: 2px;
+            font-size: 14px;
+        }
+
+        #update {
+            background: #4f7eff;
+            color: white;
+        }
+
+        #delete {
+            background: #d9534f;
+            color: white;
+        }
+
+        #update:hover {
+            background: #2f5eea;
+        }
+
+        #delete:hover {
+            background: #c12e2a;
+        }
+
+        /* Update section table */
+        #address, #username, #password, #phoneno {
+            width: 90%;
+            padding: 8px;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+        }
+
+        textarea {
+            resize: none;
+            height: 60px;
+        }
+
+        #updateDetails {
+            background: #4f7eff;
+            color: white;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        #updateDetails:hover {
+            background: #2f5eea;
+        }
+
+        #reset {
+            padding: 8px 14px;
+            border-radius: 6px;
+            border: none;
+            background: #888;
+            color: white;
+            cursor: pointer;
+        }
+
+        #reset:hover {
+            background: #666;
+        }
+    </style>
 </head>
 <body>
+
     <div class="outer">
         <div class="inner">
-            <table border="1">
+
+            <table>
                 <form action="studentlist.php" method="post">
                 <caption>Student List</caption>
+
                 <tr>
                     <th>ROLL NO</th>
                     <th>NAME</th>
@@ -20,6 +136,7 @@
                     <th>PASSWORD</th>
                     <th>ACTION</th>
                 </tr>
+
                 <?php
                 include 'connection.php';
 
@@ -34,7 +151,8 @@
                         echo "<td>".$row['phoneno']."</td>";
                         echo "<td>".$row['username']."</td>";
                         echo "<td>".$row['password']."</td>";
-                        echo "<td><button type='submit' name='update' id='update' value='".$row['rollno']."'>Update</button><button type='submit' name='delete' id='delete' value='".$row['rollno']."'>Delete</button></td>";
+                        echo "<td><button type='submit' name='update' id='update' value='".$row['rollno']."'>Update</button>
+                                  <button type='submit' name='delete' id='delete' value='".$row['rollno']."'>Delete</button></td>";
                         echo "</tr>";
                     }
                 }else{
@@ -43,10 +161,13 @@
                 ?>
                 </form>
             </table>
+
         </div>
     </div>
+
 </body>
 </html>
+
 <table>
     <form action="studentlist.php" method="post">
 <?php

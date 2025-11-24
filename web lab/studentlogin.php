@@ -80,7 +80,7 @@
 <body>
     <div class="outer">
         <div class="inner">
-            <form action="login.php" method="post">
+            <form action="studentlogin.php" method="post">
                 <table>
                     <caption>Log In</caption>
                     <tr>
@@ -106,14 +106,26 @@
 include 'connection.php';
 
 if(isset($_POST['submit'])){
-    $username=$_POST['usr'];
-    $password=$_POST['pass'];
-    $sql = "SELECT username FROM admin WHERE username='$username' AND password='$password'";
-    $result=mysqli_query($conn,$sql);
-    if(mysqli_num_rows($result)>0){
-        echo "<script>window.location='admin.php';</script>";
-    }else{
-        echo "<script>alert('Incorrect username or password!!');</script>";
+    $username = $_POST['usr'];
+    $password = $_POST['pass'];
+
+    $sql = "SELECT * FROM stud WHERE username='$username' AND password='$password'";
+    $result = mysqli_query($conn, $sql);
+
+    if(mysqli_num_rows($result) > 0){
+        $row = mysqli_fetch_assoc($result);
+
+        // Redirect to dashboard and pass roll number in URL
+        $rollno = $row['rollno'];
+        echo "<script>
+                alert('Welcome ".$row['name']."');
+                window.location.href='studentdashboard.php?rollno=".$rollno."';
+              </script>";
+    } else {
+        echo "<script>
+                alert('Incorrect username or password');
+                window.location.href='studentlogin.php';
+              </script>";
     }
 }
 ?>
