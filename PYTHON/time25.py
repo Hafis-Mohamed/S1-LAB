@@ -21,7 +21,7 @@ class time:
     def __str__(self):
         return f"{self._hour:02d}:{self._minute:02d}:{self._second:02d}"
 
-t1=time(12,61,30)
+t1=time(13,1,30)
 t2=time(16,50,47)
 t=t1+t2
 print(t)

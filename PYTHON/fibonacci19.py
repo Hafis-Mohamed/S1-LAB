@@ -15,3 +15,12 @@ def fibonacci(num):
 
 num =int(input("Enter the number of terms : "))
 fibonacci(num)
+
+
+# def fibo(num):
+#     a,b=0,1
+#     for i in range(1,num+1):
+#         a,b=b,a+b
+#         print(a)
+# n=int(input("enter the limit"))
+# fibo(n)

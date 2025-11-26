@@ -11,3 +11,10 @@ oddlist = [num for num in numlist if num%2 != 0]
 print(f"list : {numlist}")
 print(f"After removing even numbers : {oddlist}")
 
+# numbers=input("enter numbers").split(',')
+# odd=[]
+# for i in numbers:
+#     if int(i)%2!=0:
+#         odd.append(int(i))
+# print(odd)
+
