@@ -165,6 +165,7 @@ void search(int value){
         temp=temp->next;
         pos++;
     }
+    return;
 }
 
 
